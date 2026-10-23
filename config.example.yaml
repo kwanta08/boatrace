@@ -1,0 +1,38 @@
+# boatev 設定の例。PC ごとに config.yaml へコピーして使う（config.yaml は git 管理外）。
+# 相対パスはこのファイルの置き場所を基準に解決される。
+
+machine:
+  # dev: 開発PC（オッズ・直前情報ページには一切アクセスしない）、exec: 実行PC
+  role: dev
+
+paths:
+  data_dir: data
+  models_dir: models
+  reports_dir: reports
+
+tools:
+  # 7-Zip の実行ファイル。Windows の既定は下記（PATH には無い）。Mac は 7zz。
+  sevenzip: C:/Program Files/7-Zip/7z.exe
+
+fetch:
+  lzh_interval_sec: 2.0   # 下限 2.0
+  page_interval_sec: 3.0  # 下限 3.0
+  timeout_sec: 30
+  user_agent: boatev/{version} (private use)  # {version} は boatev.__version__ に置き換わる
+
+urls:
+  lzh_base: https://www1.mbrace.or.jp/od2
+  race_page_base: https://www.boatrace.jp/owpc/pc/race
+
+betting:
+  ev_min: 1.10
+  p_min: 0.05
+  odds_max: 50
+  kelly: 0.25
+  bet_cap_fraction: 0.02
+  bet_cap_yen: 1000  # 仮置き（spec「決めること」）
+  unit_yen: 100
+
+budget:
+  monthly_yen: 10000
+  daily_stop_fraction: 0.10
